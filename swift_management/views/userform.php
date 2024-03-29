@@ -33,6 +33,26 @@
 		<span class="textareaMinCharsMsg">Address must specify at least 10 characters.</span>	
 		</span>
       </div>
+      <div class="form-group">
+      <div class="row">
+      	<div class="col-xs-6">
+			<label>Reservation Date</label>
+			<span id="sprytf_rdate">
+        	<input type="text" name="rdate" class="form-control" placeholder="YYYY-mm-dd">
+			<span class="textfieldRequiredMsg">Date is required.</span>
+			<span class="textfieldInvalidFormatMsg">Invalid date Format.</span>
+			</span>
+        </div>
+        <div class="col-xs-6">
+			<label>Reservation Time</label>
+			<span id="sprytf_rtime">
+            <input type="text" name="rtime" class="form-control" placeholder="HH:mm">
+			<span class="textfieldRequiredMsg">Time is required.</span>
+			<span class="textfieldInvalidFormatMsg">Invalid time Format.</span>
+			</span>
+       </div>
+      </div>
+	  </div>
 	  <div class="form-group">
         <label for="exampleInputEmail1">Phone</label>
 		<span id="sprytf_phone">

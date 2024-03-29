@@ -26,6 +26,7 @@ function createUser() {
 	$phone 		= $_POST['phone'];
 	$email 		= $_POST['email'];
 	$type		= $_POST['type'];
+	$bdate		= $_POST['bdate'];
 	
 	//TODO first check if that date has a holiday
 	$hsql	= "SELECT * FROM tbl_users WHERE name = '$name'";
@@ -41,7 +42,7 @@ function createUser() {
 	dbQuery($sql);
 	
 	//send email on registration confirmation
-	$bodymsg = "User $name booked the date slot on $bkdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
+	$bodymsg = "User $name booked the date slot on $bdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
 	$data = array('to' => '$email', 'sub' => 'Booking on $rdate.', 'msg' => $bodymsg);
 	//send_email($data);
 	header('Location: ../views/?v=USERS&msg=' . urlencode('User successfully registered.'));
@@ -50,6 +51,9 @@ function createUser() {
 
 //http://localhost/houda/views/process.php?cmd=change&action=inactive&userId=1
 function changeStatus() {
+	$bdate		= $_POST['bdate'];
+	$name 		= $_POST['name'];
+
 	$action 	= $_GET['action'];
 	$userId 	= (int)$_GET['userId'];
 	
@@ -58,7 +62,7 @@ function changeStatus() {
 	dbQuery($sql);
 	
 	//send email on registration confirmation
-	$bodymsg = "User $name booked the date slot on $bkdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
+	$bodymsg = "User $name booked the date slot on $bdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
 	$data = array('to' => '$email', 'sub' => 'Booking on $rdate.', 'msg' => $bodymsg);
 	//send_email($data);
 	header('Location: ../views/?v=USERS&msg=' . urlencode('User status successfully updated.'));

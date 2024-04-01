@@ -38,7 +38,7 @@
       	<div class="col-xs-6">
 			<label>Reservation Date</label>
 			<span id="sprytf_rdate">
-        	<input type="text" name="rdate" class="form-control" placeholder="YYYY-mm-dd">
+        	<input type="text" name="rdate" class="form-control input-sm" placeholder="YYYY-mm-dd">
 			<span class="textfieldRequiredMsg">Date is required.</span>
 			<span class="textfieldInvalidFormatMsg">Invalid date Format.</span>
 			</span>
@@ -46,7 +46,7 @@
         <div class="col-xs-6">
 			<label>Reservation Time</label>
 			<span id="sprytf_rtime">
-            <input type="text" name="rtime" class="form-control" placeholder="HH:mm">
+            <input type="text" name="rtime" class="form-control input-sm" placeholder="HH:mm">
 			<span class="textfieldRequiredMsg">Time is required.</span>
 			<span class="textfieldInvalidFormatMsg">Invalid time Format.</span>
 			</span>
@@ -71,7 +71,7 @@
 	  
 
 	<div class="form-group">
-        <label for="exampleInputEmail1">Uset Type</label>
+        <label for="exampleInputEmail1">session Type</label>
 		<span id="sprytf_type">
         <select name="type"  class="form-control input-sm">
 			<option value=""> -- select a session --</option>
@@ -81,6 +81,13 @@
 		<span class="selectRequiredMsg">Please select User Type.</span>
 		</span>
 		
+      </div>
+	  <div class="form-group">
+        <label for="exampleInputPassword1">No of Peoples</label>
+		<span id="sprytf_ucount">
+        <input type="text" name="ucount" class="form-control input-sm" placeholder="No of peoples" >
+		<span class="textfieldRequiredMsg">No of peoples is required.</span>
+		<span class="textfieldInvalidFormatMsg">Invalid Format.</span>
       </div>
 	  		  
 	  

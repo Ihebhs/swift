@@ -1,34 +1,40 @@
 <?php
+// Database connection config
+$dbHost = 'localhost';
+$dbUser = 'root';
+$dbPass = '';
+$dbName = 'db_event_management';
 
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
-$number = $_POST['number'];
-$date = $_POST['date'];
-$time = $_POST['time'];
-$members = $_POST['members'];
+// Create connection
+$dbConn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
-// Data connection
-$conn = new mysqli('localhost', 'root', '', 'swift_db');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Check connection
+if ($dbConn->connect_error) {
+    die("Connection failed: " . $dbConn->connect_error);
 }
 
-// Prepare and bind the SQL statement
-$stmt = $conn->prepare("INSERT INTO swift (firstName, lastName, email, number, date, time, members) VALUES (?, ?, ?, ?, ?, ?, ?)");
-if (!$stmt) {
-    die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = mysqli_real_escape_string($dbConn, $_POST['name']);
+    $address = mysqli_real_escape_string($dbConn, $_POST['address']);
+    $rdate = mysqli_real_escape_string($dbConn, $_POST['rdate']);
+    $rtime = mysqli_real_escape_string($dbConn, $_POST['rtime']);
+    $phone = mysqli_real_escape_string($dbConn, $_POST['phone']);
+    $email = mysqli_real_escape_string($dbConn, $_POST['email']);
+    $type = mysqli_real_escape_string($dbConn, $_POST['type']);
+    $ucount = mysqli_real_escape_string($dbConn, $_POST['ucount']);
+
+    $sql = "INSERT INTO tbl_users (name, address, rdate, rtime, phone, email, type, ucount)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $dbConn->prepare($sql);
+    $stmt->bind_param("ssssssss", $name, $address, $rdate, $rtime, $phone, $email, $type, $ucount);
+    $stmt->execute();
+
+    echo "New record created successfully";
+    header("location:http://localhost/site/payment.html");
+
+    $stmt->close();
 }
 
-// Bind parameters and execute
-$stmt->bind_param("sssssss", $firstName, $lastName, $email, $number, $date, $time, $members);
-if (!$stmt->execute()) {
-    die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-}
-
-echo "Registration successful.";
-
-// Close statement and connection
-$stmt->close();
-$conn->close();
+$dbConn->close();
 ?>
+

@@ -15,7 +15,7 @@ $dbName = 'db_event_management';
 // Database connection
 $dbConn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 // Project data
-$site_title = 'Online Banking - www.TechZoo.org';
+$site_title = ' www.swiftpaddl.org';
 $email_id = 'customerservice@hlbonline.pro';
 
 $thisFile = str_replace('\\', '/', __FILE__);
@@ -27,7 +27,7 @@ $srvRoot = str_replace('library/config.php', '', $thisFile);
 define('WEB_ROOT', $webRoot);
 define('SRV_ROOT', $srvRoot);
 
-// Sanitize input data if magic quotes are not enabled
+/* Sanitize input data if magic quotes are not enabled
 if (!function_exists('get_magic_quotes_gpc') || !get_magic_quotes_gpc()) {
     if (isset($_POST)) {
         foreach ($_POST as $key => $value) {
@@ -46,7 +46,7 @@ if (!function_exists('get_magic_quotes_gpc') || !get_magic_quotes_gpc()) {
 if ($dbConn->connect_error) {
     die('Connection failed: ' . $dbConn->connect_error);
 }
-
+*/
 require_once 'database.php';
 require_once 'common.php';
 ?>

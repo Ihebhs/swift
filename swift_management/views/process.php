@@ -23,10 +23,13 @@ switch($cmd) {
 function createUser() {
 	$name 		= $_POST['name'];
 	$address 	= $_POST['address'];
+	$rdate		= $_POST['rdate'];
+	$rtime		= $_POST['rtime'];
 	$phone 		= $_POST['phone'];
 	$email 		= $_POST['email'];
 	$type		= $_POST['type'];
-	$bdate		= $_POST['bdate'];
+	$ucount		= $_POST['ucount'];
+	
 	
 	//TODO first check if that date has a holiday
 	$hsql	= "SELECT * FROM tbl_users WHERE name = '$name'";
@@ -37,13 +40,13 @@ function createUser() {
 		exit();
 	}
 	$pwd = random_string();
-	$sql = "INSERT INTO tbl_users (name, pwd, address, phone, email, type, status, bdate)
-			VALUES ('$name', '$pwd', '$address', '$phone', '$email', '$type', 'active', NOW())";	
+	$sql = "INSERT INTO tbl_users (name, pwd, address, rdate, rtime, phone, email, type, status, bdate,ucount)
+			VALUES ('$name', '$pwd', '$address','$rdate','$rtime', '$phone', '$email', '$type', 'active', NOW(),'$ucount')";	
 	dbQuery($sql);
 	
-	//send email on registration confirmation
-	$bodymsg = "User $name booked the date slot on $bdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
-	$data = array('to' => '$email', 'sub' => 'Booking on $rdate.', 'msg' => $bodymsg);
+	/*//send email on registration confirmation
+	$bodymsg = "User $name booked the date slot on $bkdate. Requesting you to please take further action on user booking.<br/>Mbr/>Tousif Khan";
+	$data = array('to' => '$email', 'sub' => 'Booking on $rdate.', 'msg' => $bodymsg);*/
 	//send_email($data);
 	header('Location: ../views/?v=USERS&msg=' . urlencode('User successfully registered.'));
 	exit();

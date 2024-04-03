@@ -1,4 +1,6 @@
 <?php
+require_once '<swift_management/library/config.php';
+require_once '<swift_management/library/functions.php';
 // Database connection config
 $dbHost = 'localhost';
 $dbUser = 'root';

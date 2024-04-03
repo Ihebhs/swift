@@ -309,9 +309,10 @@
     margin-left: 293px;
   }
   u-section-2 .u-text-2  {
-    font-size: 80px;
-  }margin-right: 571px;
+    margin-right: 571px;
     margin-left: 293px;
+    font-size: 80px;
+  }
 }
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
